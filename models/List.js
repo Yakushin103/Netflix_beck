@@ -13,4 +13,4 @@ const ListShema = new mongoose.Schema({
   { timestamps: true }
 )
 
-module.export = mongoose.model("List", ListShema)
+module.exports = mongoose.model("List", ListShema)
