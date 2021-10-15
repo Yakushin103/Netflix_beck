@@ -8,12 +8,11 @@ router.post("/register", async (req, res) => {
   // const { username, email, password } = req.body
 
   const findUser = await User.findOne({ email: req.body.email })
+  // if (!!findUser || fi) {
+  //   return res.status(401).json("Wrong password or username")
+  // }
 
-  if (!findUser) {
-    return res.status(401).json("Wrong password or username")
-  }
-
-  if (!!findUser.username) {
+  if (findUser) {
     return res.status(401).json("The user already exists")
   }
 
@@ -58,8 +57,9 @@ router.post("/login", async (req, res) => {
       { expiresIn: "5d" }
     )
 
+
     if (originPass !== req.body.password) {
-      return res.status(401).json("Wrong password or username")
+      return res.status(401).json("Wrong password or username!!!")
     }
 
     const { password, ...info } = user._doc
