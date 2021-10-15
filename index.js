@@ -7,6 +7,7 @@ const app = express()
 const authRouter = require("./routers/auth")
 const userRouter = require("./routers/users")
 const movieRouter = require("./routers/movies")
+const listRouter = require("./routers/list")
 
 dotenv.config()
 
@@ -23,6 +24,7 @@ app.use(express.json())
 app.use("/api/auth", authRouter)
 app.use("/api/users", userRouter)
 app.use("/api/movies", movieRouter)
+app.use("/api/lists", listRouter)
 
 app.listen(8800, () => {
   console.log(`Backend server is running!`)
